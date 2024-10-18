@@ -1,10 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useChannel } from '../utils/ably';
 export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const { sendMessage } = useChannel('anonymous-chat', (message:any) => {
     setMessages((prevMessages):any => [...prevMessages, message.data]);
